@@ -3,6 +3,7 @@ import 'package:real_estate/screens/login.screen.dart';
 import 'package:real_estate/screens/profile_screen.dart';
 import 'screens/register_screen.dart';
 import 'screens/home_screen.dart';
+import 'screens/navigation_screen.dart';
 import 'package:flutter/foundation.dart';
 
 void main() {
@@ -16,8 +17,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
+      initialRoute: '/',
       routes: {
+        '/': (context) => NavigationScreen(),
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
         '/home': (context) => HomeScreen(),

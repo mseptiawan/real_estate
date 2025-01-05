@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'models/data.dart';
 import 'models/property.dart';
+import 'detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -226,6 +227,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildPropertyCard(Property property) {
+
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -323,21 +326,5 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ],
-      ),
-    );
-  }
 
-  Widget _buildFeatureIcon(IconData icon, String label) {
-    return Row(
-      children: [
-        Icon(icon, size: 16, color: Colors.white70),
-        SizedBox(width: 4),
-        Text(
-          label,
-          style: TextStyle(color: Colors.white70),
-        ),
-      ],
-    );
-  }
-}
 

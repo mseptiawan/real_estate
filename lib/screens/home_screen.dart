@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'models/data.dart';
 import 'models/property.dart';
@@ -226,128 +227,104 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildPropertyCard(Property property) {
-    return GestureDetector(
-      onTap: () {
-        // Navigate to DetailScreen
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DetailScreen(propertyId: property.id),
+
+
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 8,
+            offset: Offset(0, 2),
           ),
-        );
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 8,
-              offset: Offset(0, 2),
-            ),
-          ],
-        ),
-        child: Stack(
-          children: [
-            // Full width image
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.asset(
-                property.images[0],
-                height: 200,
-                width: double.infinity,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => Container(
-                  height: 200,
-                  color: Colors.grey[300],
-                  child: Icon(Icons.home, size: 50, color: Colors.grey[400]),
-                ),
-              ),
-            ),
-            // Gradient overlay
-            Container(
+        ],
+      ),
+      child: Stack(
+        children: [
+          // Full width image
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset(
+              property.images[0],
               height: 200,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    Colors.black.withOpacity(0.7),
-                  ],
-                ),
+              width: double.infinity,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) => Container(
+                height: 200,
+                color: Colors.grey[300],
+                child: Icon(Icons.home, size: 50, color: Colors.grey[400]),
               ),
             ),
-            // Content
-            Container(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 120),
-                  Text(
-                    property.name,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 4),
-                  Row(
-                    children: [
-                      Icon(Icons.location_on, size: 16, color: Colors.white70),
-                      SizedBox(width: 4),
-                      Text(
-                        property.location,
-                        style: TextStyle(color: Colors.white70),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Rp ${(property.price / 1000000000).toStringAsFixed(1)} B',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          _buildFeatureIcon(Icons.bed, '${property.beds}'),
-                          SizedBox(width: 16),
-                          _buildFeatureIcon(Icons.bathtub, '${property.baths}'),
-                          SizedBox(width: 16),
-                          _buildFeatureIcon(Icons.square_foot, '${property.size} m²'),
-                        ],
-                      ),
-                    ],
-                  ),
+          ),
+          // Gradient overlay
+          Container(
+            height: 200,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.transparent,
+                  Colors.black.withOpacity(0.7),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
+          ),
+          // Content
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 120),
+                Text(
+                  property.name,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(height: 4),
+                Row(
+                  children: [
+                    Icon(Icons.location_on, size: 16, color: Colors.white70),
+                    SizedBox(width: 4),
+                    Text(
+                      property.location,
+                      style: TextStyle(color: Colors.white70),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Rp ${(property.price / 1000000000).toStringAsFixed(1)} B',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        _buildFeatureIcon(Icons.bed, '${property.beds}'),
+                        SizedBox(width: 16),
+                        _buildFeatureIcon(Icons.bathtub, '${property.baths}'),
+                        SizedBox(width: 16),
+                        _buildFeatureIcon(Icons.square_foot, '${property.size} m²'),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
 
-  Widget _buildFeatureIcon(IconData icon, String label) {
-    return Row(
-      children: [
-        Icon(icon, size: 16, color: Colors.white70),
-        SizedBox(width: 4),
-        Text(
-          label,
-          style: TextStyle(color: Colors.white70),
-        ),
-      ],
-    );
-  }
-}
+

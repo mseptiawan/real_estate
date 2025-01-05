@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
+
 import 'search_screen.dart';
+
 import 'profile_screen.dart';
 
 class NavigationScreen extends StatefulWidget {
@@ -12,7 +14,9 @@ class _NavigationScreenState extends State<NavigationScreen> {
   int _currentIndex = 0;
   final List<Widget> _screens = [
     HomeScreen(),
+
     SearchScreen(), // Add the SearchScreen
+
     ProfileScreen(),
   ];
 
@@ -32,6 +36,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
+
             label: 'Beranda',
           ),
           BottomNavigationBarItem(

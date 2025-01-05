@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:fluttertoast/fluttertoast.dart';
+
+
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -13,6 +16,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   String? _address;
   String? _gender;
   String? _email;
+
 
   @override
   void initState() {
@@ -36,11 +40,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
     await prefs.clear();
     Navigator.pushReplacementNamed(context, '/login');
     Fluttertoast.showToast(msg: 'Berhasil Logout');
+
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: _name == null
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
@@ -229,6 +236,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Icon(Icons.chevron_right, color: Colors.grey),
           ],
         ),
+
       ),
     );
   }

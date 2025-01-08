@@ -4,6 +4,8 @@ import 'models/property.dart';
 import 'detail_screen.dart';
 
 class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -35,7 +37,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search Properties'),
+        title: const Text('Search Properties'),
         backgroundColor: Colors.green,
       ),
       body: SafeArea(
@@ -50,7 +52,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 onChanged: _searchProperties,
                 decoration: InputDecoration(
                   hintText: 'Search by property name or location...',
-                  prefixIcon: Icon(Icons.search, color: Colors.green),
+                  prefixIcon: const Icon(Icons.search, color: Colors.green),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -66,17 +68,17 @@ class _SearchScreenState extends State<SearchScreen> {
                   return GestureDetector(
                     onTap: () {
                       // Navigate to DetailScreen
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailScreen(propertyId: property.id),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => DetailScreen(propertyId: property.id),
+                      //   ),
+                      // );
                     },
                     child: Card(
-                      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                       child: ListTile(
-                        contentPadding: EdgeInsets.all(12),
+                        contentPadding: const EdgeInsets.all(12),
                         title: Text(property.name),
                         subtitle: Text(property.location),
                         trailing: Text('Rp ${(property.price / 1000000000).toStringAsFixed(1)} B'),

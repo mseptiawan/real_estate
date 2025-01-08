@@ -6,6 +6,8 @@ import 'search_screen.dart';
 import 'profile_screen.dart';
 
 class NavigationScreen extends StatefulWidget {
+  const NavigationScreen({super.key});
+
   @override
   _NavigationScreenState createState() => _NavigationScreenState();
 }
@@ -13,11 +15,11 @@ class NavigationScreen extends StatefulWidget {
 class _NavigationScreenState extends State<NavigationScreen> {
   int _currentIndex = 0;
   final List<Widget> _screens = [
-    HomeScreen(),
+    const HomeScreen(),
 
-    SearchScreen(), // Add the SearchScreen
+    const SearchScreen(), // Add the SearchScreen
 
-    ProfileScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {

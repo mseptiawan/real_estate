@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:flutter/foundation.dart'; 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -51,16 +50,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
+                      const Text(
                         'Login',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 30), 
+                      const SizedBox(height: 30), 
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Email',
                           prefixIcon: Icon(Icons.email),
                         ),
@@ -76,11 +75,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 20), 
+                      const SizedBox(height: 20), 
                       TextFormField(
                         decoration: InputDecoration(
                           labelText: 'Password',
-                          prefixIcon: Icon(Icons.lock),
+                          prefixIcon: const Icon(Icons.lock),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _isPasswordVisible
@@ -104,11 +103,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 30), 
+                      const SizedBox(height: 30), 
                       ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
                           iconColor: Colors.green, 
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 40, vertical: 12),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
@@ -130,15 +129,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                           }
                         },
-                        icon: Icon(Icons.login),
-                        label: Text('Login'),
+                        icon: const Icon(Icons.login),
+                        label: const Text('Login'),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       GestureDetector(
                         onTap: () {
                           Navigator.pushReplacementNamed(context, '/register');
                         },
-                        child: Text(
+                        child: const Text(
                           'Belum punya akun? Daftar',
                           style: TextStyle(
                             color: Colors.blue,

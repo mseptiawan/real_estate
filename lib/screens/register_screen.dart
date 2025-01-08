@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
 }
@@ -62,17 +64,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
+                      const Text(
                         'Register',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 30), 
+                      const SizedBox(height: 30), 
 
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Full Name',
                           prefixIcon: Icon(Icons.person),
                         ),
@@ -84,10 +86,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
 
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Phone Number',
                           prefixIcon: Icon(Icons.phone),
                         ),
@@ -100,10 +102,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
 
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Address',
                           prefixIcon: Icon(Icons.location_on),
                         ),
@@ -115,10 +117,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
 
                       DropdownButtonFormField<String>(
-                        decoration: InputDecoration(labelText: 'Gender'),
+                        decoration: const InputDecoration(labelText: 'Gender'),
                         value: _gender,
                         items: ['Male', 'Female', 'Other'].map((gender) {
                           return DropdownMenuItem<String>(
@@ -139,10 +141,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
 
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Email',
                           prefixIcon: Icon(Icons.email),
                         ),
@@ -158,10 +160,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
 
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Password',
                           prefixIcon: Icon(Icons.lock),
                         ),
@@ -180,28 +182,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 30), 
+                      const SizedBox(height: 30), 
 
                       ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
                           iconColor: Colors.green, 
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 40, vertical: 12),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
                         onPressed: _register,
-                        icon: Icon(Icons.app_registration),
-                        label: Text('Register'),
+                        icon: const Icon(Icons.app_registration),
+                        label: const Text('Register'),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
 
                       GestureDetector(
                         onTap: () {
                           Navigator.pushReplacementNamed(context, '/login');
                         },
-                        child: Text(
+                        child: const Text(
                           'Already have an account? Login',
                           style: TextStyle(
                             color: Colors.blue,

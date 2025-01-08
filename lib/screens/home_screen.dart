@@ -1,13 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:real_estate/screens/detail_screen.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'models/data.dart';
 import 'models/property.dart';
-import 'detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
+  Widget _buildFeatureIcon(IconData icon, String label) {
+    return Row(
+      children: [
+        Icon(icon, size: 16, color: Colors.white),
+        const SizedBox(width: 4),
+        Text(
+          label,
+          style: const TextStyle(color: Colors.white),
+          ),
+      ],
+    );
+  }
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -46,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     colors: [Colors.green.shade500, Colors.green.shade300],
                   ),
                 ),
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
                     // User info and avatar
@@ -65,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             Text(
                               _userName ?? 'Loading...',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
@@ -73,14 +87,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ],
                         ),
-                        CircleAvatar(
+                        const CircleAvatar(
                           radius: 25,
                           backgroundColor: Colors.white,
                           child: Icon(Icons.person, color: Colors.green, size: 30),
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     // Search Bar
                     Container(
                       decoration: BoxDecoration(
@@ -90,13 +104,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           BoxShadow(
                             color: Colors.black.withOpacity(0.1),
                             blurRadius: 8,
-                            offset: Offset(0, 3),
+                            offset: const Offset(0, 3),
                           ),
                         ],
                       ),
                       child: TextField(
                         controller: _searchController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: 'Search properties...',
                           prefixIcon: Icon(Icons.search, color: Colors.green),
                           suffixIcon: Icon(Icons.filter_list, color: Colors.green),
@@ -118,20 +132,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Categories',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: _propertyTypes
                             .map((type) => Padding(
-                                  padding: EdgeInsets.only(right: 12),
+                                  padding: const EdgeInsets.only(right: 12),
                                   child: _buildCategoryCard(
                                     type.name,
                                     type.icon,
@@ -153,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Featured Properties',
                           style: TextStyle(
                             fontSize: 20,
@@ -162,8 +176,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         TextButton.icon(
                           onPressed: () {},
-                          icon: Icon(Icons.arrow_forward, size: 18),
-                          label: Text('See All'),
+                          icon: const Icon(Icons.arrow_forward, size: 18),
+                          label: const Text('See All'),
                           style: TextButton.styleFrom(
                             foregroundColor: Colors.green,
                           ),
@@ -176,7 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               padding: const EdgeInsets.only(bottom: 16),
                               child: _buildPropertyCard(property),
                             ))
-                        .toList(),
+                        ,
                   ],
                 ),
               ),
@@ -190,7 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildCategoryCard(String title, String iconPath) {
     return Container(
       width: 100,
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -198,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
             blurRadius: 8,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -210,12 +224,12 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 40,
             height: 40,
             errorBuilder: (context, error, stackTrace) =>
-                Icon(Icons.home, size: 40, color: Colors.green),
+                const Icon(Icons.home, size: 40, color: Colors.green),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 12,
             ),
@@ -237,7 +251,7 @@ class _HomeScreenState extends State<HomeScreen> {
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
             blurRadius: 8,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -273,39 +287,47 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          // Content
-          Container(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 120),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+            child: InkWell(
+              onTap: () {
+                  // Navigator.push(
+                  //   context,
+                  //   // MaterialPageRoute(
+                  //   //   // builder: (context) => DetailScreen(propertyId: property.id),
+                  //   // ),
+                  // );
+                },
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                const SizedBox(height: 120),
                 Text(
                   property.name,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Row(
                   children: [
-                    Icon(Icons.location_on, size: 16, color: Colors.white70),
-                    SizedBox(width: 4),
+                    const Icon(Icons.location_on, size: 16, color: Colors.white70),
+                    const SizedBox(width: 4),
                     Text(
                       property.location,
-                      style: TextStyle(color: Colors.white70),
+                      style: const TextStyle(color: Colors.white70),
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'Rp ${(property.price / 1000000000).toStringAsFixed(1)} B',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -313,11 +335,30 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Row(
                       children: [
-                        _buildFeatureIcon(Icons.bed, '${property.beds}'),
-                        SizedBox(width: 16),
-                        _buildFeatureIcon(Icons.bathtub, '${property.baths}'),
-                        SizedBox(width: 16),
-                        _buildFeatureIcon(Icons.square_foot, '${property.size} m²'),
+                        Row(
+                          children: [
+                            Icon(Icons.bed, size: 16, color: Colors.white),
+                            const SizedBox(width: 4),
+                            Text(
+                              '${property.beds}',
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                            const SizedBox(width: 8),
+                            Icon(Icons.bathtub, size: 16, color: Colors.white),
+                            const SizedBox(width: 4),
+                            Text(
+                              '${property.baths}',
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                            const SizedBox(width: 8),
+                            Icon(Icons.square_foot, size: 16, color: Colors.white),
+                            const SizedBox(width: 4),
+                            Text(
+                              '${property.size}',
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ],
@@ -325,6 +366,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-        ],
+      )],
+      ),
+    );
+  }
+}
 
 

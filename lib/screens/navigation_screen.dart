@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:real_estate/screens/favorite_screen.dart';
 import 'home_screen.dart';
 
 import 'search_screen.dart';
@@ -19,6 +20,8 @@ class _NavigationScreenState extends State<NavigationScreen> {
 
     const SearchScreen(), // Add the SearchScreen
 
+    FavoriteScreen(),
+
     const ProfileScreen(),
   ];
 
@@ -37,20 +40,21 @@ class _NavigationScreenState extends State<NavigationScreen> {
         onTap: _onItemTapped,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home, color: Colors.white),
+            backgroundColor: Colors.green,
 
             label: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.search, color: Colors.white),
             label: 'Cari',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon: Icon(Icons.favorite, color: Colors.white),
             label: 'Favorit',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person, color: Colors.white),
             label: 'Profil',
           ),
         ],

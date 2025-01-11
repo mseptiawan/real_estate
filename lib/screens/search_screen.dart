@@ -5,7 +5,6 @@ import 'detail_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
-
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -23,10 +22,12 @@ class _SearchScreenState extends State<SearchScreen> {
   void _searchProperties(String query) {
     setState(() {
       if (query.isEmpty) {
-        _searchResults = AppData.properties; // Show all properties if search is empty
+        _searchResults =
+            AppData.properties; // Show all properties if search is empty
       } else {
         _searchResults = AppData.properties
-            .where((property) => property.name.toLowerCase().contains(query.toLowerCase()) ||
+            .where((property) =>
+                property.name.toLowerCase().contains(query.toLowerCase()) ||
                 property.location.toLowerCase().contains(query.toLowerCase()))
             .toList();
       }
@@ -37,7 +38,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Search Properties'),
+        title: const Text('Temukan propertimu segera'),
         backgroundColor: Colors.green,
       ),
       body: SafeArea(
@@ -51,7 +52,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 controller: _searchController,
                 onChanged: _searchProperties,
                 decoration: InputDecoration(
-                  hintText: 'Search by property name or location...',
+                  hintText: 'Cari nama properti atau tempat...',
                   prefixIcon: const Icon(Icons.search, color: Colors.green),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -76,12 +77,14 @@ class _SearchScreenState extends State<SearchScreen> {
                       // );
                     },
                     child: Card(
-                      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16),
                       child: ListTile(
                         contentPadding: const EdgeInsets.all(12),
                         title: Text(property.name),
                         subtitle: Text(property.location),
-                        trailing: Text('Rp ${(property.price / 1000000000).toStringAsFixed(1)} B'),
+                        trailing: Text(
+                            'Rp ${(property.price / 1000000000).toStringAsFixed(1)} B'),
                       ),
                     ),
                   );

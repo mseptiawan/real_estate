@@ -3,8 +3,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 
-
-
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -19,7 +17,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   String? _gender;
   String? _email;
 
-
   @override
   void initState() {
     super.initState();
@@ -29,11 +26,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Future<void> _loadProfile() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      _name = prefs.getString('fullName') ?? 'Not Set';
-      _phone = prefs.getString('phoneNumber') ?? 'Not Set';
-      _address = prefs.getString('address') ?? 'Not Set';
-      _gender = prefs.getString('gender') ?? 'Not Set';
-      _email = prefs.getString('email') ?? 'Not Set';
+      _name = prefs.getString('fullName') ?? 'Belum disetel';
+      _phone = prefs.getString('phoneNumber') ?? 'Belum disetel';
+      _address = prefs.getString('address') ?? 'Belum disetel';
+      _gender = prefs.getString('gender') ?? 'Belum disetel';
+      _email = prefs.getString('email') ?? 'Belum disetel';
     });
   }
 
@@ -42,14 +39,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
     await prefs.clear();
     Navigator.pushReplacementNamed(context, '/login');
     Fluttertoast.showToast(msg: 'Berhasil Logout');
-
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: _name == null
           ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
@@ -57,7 +51,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   // Profile Header with Gradient
                   Container(
-                    height: 260,
+                    width: double
+                        .infinity, // Memastikan container memenuhi lebar layar
+                    height:
+                        260, // Anda dapat mempertahankan tinggi sesuai kebutuhan
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
@@ -101,55 +98,56 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
+
                   // Profile Information
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
                         _buildInfoCard(
-                          'Personal Information',
+                          'Informasi pengguna',
                           [
-                            _buildInfoItem(Icons.phone, 'Phone', _phone!),
-                            _buildInfoItem(Icons.location_on, 'Address', _address!),
-                            _buildInfoItem(Icons.person, 'Gender', _gender!),
+                            _buildInfoItem(
+                                Icons.phone, 'No handphone', _phone!),
+                            _buildInfoItem(
+                                Icons.location_on, 'Alamat', _address!),
+                            _buildInfoItem(
+                                Icons.person, 'Jenis kelamin', _gender!),
                           ],
                         ),
                         const SizedBox(height: 20),
-                        _buildInfoCard(
-                          'Account Settings',
-                          [
-                            _buildSettingItem(
-                              Icons.edit,
-                              'Edit Profile',
-                              () => Navigator.pushNamed(context, '/edit-profile'),
-                            ),
-                            _buildSettingItem(
-                              Icons.lock,
-                              'Change Password',
-                              () => Navigator.pushNamed(context, '/change-password'),
-                            ),
-                            _buildSettingItem(
-                              Icons.notifications,
-                              'Notifications',
-                              () => Navigator.pushNamed(context, '/notifications'),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        ElevatedButton.icon(
+                        ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red,
+                            backgroundColor: const Color.fromARGB(215, 233, 7,
+                                7), // Menghilangkan background default
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 40,
-                              vertical: 12,
+                              horizontal:
+                                  0, // Menghilangkan padding horizontal agar memenuhi lebar layar
+                              vertical: 20,
                             ),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
                           ),
                           onPressed: _logout,
-                          icon: const Icon(Icons.logout),
-                          label: const Text('Logout'),
+                          child: Container(
+                            width: double
+                                .infinity, // Membuat button memenuhi lebar layar
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 30), // Memberikan margin kiri-kanan
+                            child: Text(
+                              'Logout',
+                              textAlign: TextAlign.center, // Teks di tengah
+                              style: const TextStyle(
+                                color: Color.fromARGB(
+                                    255, 238, 234, 234), // Warna teks merah
+                                fontFamily:
+                                    'Poppins', // Menggunakan font Poppins
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16, // Ukuran font dapat disesuaikan
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -238,7 +236,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const Icon(Icons.chevron_right, color: Colors.grey),
           ],
         ),
-
       ),
     );
   }

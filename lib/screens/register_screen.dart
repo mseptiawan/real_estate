@@ -41,24 +41,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           child: ConstrainedBox(
             constraints: BoxConstraints(
-              maxWidth: screenWidth > 600
-                  ? 600
-                  : screenWidth * 0.9, 
+              maxWidth: screenWidth > 600 ? 600 : screenWidth * 0.9,
             ),
             child: Card(
-              elevation: 10, 
+              elevation: 10,
               shape: RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(16), 
+                borderRadius: BorderRadius.circular(16),
               ),
+              color: Color(0xFF4CAF50), // Green color for the card
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 24.0,
-                    vertical: 16.0), 
+                    horizontal: 24.0, vertical: 16.0),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -67,17 +65,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       const Text(
                         'Register',
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 28,
                           fontWeight: FontWeight.bold,
+                          color: Colors.white, // White color for the title
                         ),
                       ),
-                      const SizedBox(height: 30), 
+                      const SizedBox(height: 30),
 
+                      // Full Name Field
                       TextFormField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: 'Full Name',
                           prefixIcon: Icon(Icons.person),
+                          labelStyle: TextStyle(color: Colors.white),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
                         ),
+                        style: TextStyle(color: Colors.white),
                         onSaved: (value) => _fullName = value,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -88,12 +96,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 20),
 
+                      // Phone Number Field
                       TextFormField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: 'Phone Number',
                           prefixIcon: Icon(Icons.phone),
+                          labelStyle: TextStyle(color: Colors.white),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
                         ),
                         keyboardType: TextInputType.phone,
+                        style: TextStyle(color: Colors.white),
                         onSaved: (value) => _phoneNumber = value,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -104,11 +121,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 20),
 
+                      // Address Field
                       TextFormField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: 'Address',
                           prefixIcon: Icon(Icons.location_on),
+                          labelStyle: TextStyle(color: Colors.white),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
                         ),
+                        style: TextStyle(color: Colors.white),
                         onSaved: (value) => _address = value,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -119,13 +145,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 20),
 
+                      // Gender Dropdown
                       DropdownButtonFormField<String>(
-                        decoration: const InputDecoration(labelText: 'Gender'),
+                        decoration: InputDecoration(
+                          labelText: 'Gender',
+                          labelStyle: TextStyle(color: Colors.white),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                        ),
                         value: _gender,
                         items: ['Male', 'Female', 'Other'].map((gender) {
                           return DropdownMenuItem<String>(
                             value: gender,
-                            child: Text(gender),
+                            child: Text(gender,
+                                style: TextStyle(color: Colors.black)),
                           );
                         }).toList(),
                         onChanged: (value) {
@@ -143,12 +180,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 20),
 
+                      // Email Field
                       TextFormField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: 'Email',
                           prefixIcon: Icon(Icons.email),
+                          labelStyle: TextStyle(color: Colors.white),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
                         ),
                         keyboardType: TextInputType.emailAddress,
+                        style: TextStyle(color: Colors.white),
                         onSaved: (value) => _email = value,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -162,12 +208,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 20),
 
+                      // Password Field
                       TextFormField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: 'Password',
                           prefixIcon: Icon(Icons.lock),
+                          labelStyle: TextStyle(color: Colors.white),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
                         ),
                         obscureText: true,
+                        style: TextStyle(color: Colors.white),
                         onSaved: (value) => _password = value,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -182,32 +237,36 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           return null;
                         },
                       ),
-                      const SizedBox(height: 30), 
+                      const SizedBox(height: 30),
 
+                      // Register Button
                       ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                          iconColor: Colors.green, 
                           padding: const EdgeInsets.symmetric(
                               horizontal: 40, vertical: 12),
+                          shadowColor:
+                              Colors.green, // Green color for the button
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
                         onPressed: _register,
                         icon: const Icon(Icons.app_registration),
-                        label: const Text('Register'),
+                        label: const Text('Register',
+                            style: TextStyle(fontSize: 16)),
                       ),
                       const SizedBox(height: 20),
 
+                      // Login Redirection Text
                       GestureDetector(
                         onTap: () {
                           Navigator.pushReplacementNamed(context, '/login');
                         },
                         child: const Text(
-                          'Already have an account? Login',
+                          'Sudah punya akun? Login',
                           style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
+                            color: Color.fromARGB(255, 242, 242, 242),
+                            fontSize: 16,
                           ),
                         ),
                       ),

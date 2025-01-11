@@ -5,35 +5,38 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'models/data.dart';
 import 'models/property.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class FavoriteScreen extends StatefulWidget {
+  const FavoriteScreen({super.key});
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
-  Widget _buildFeatureIcon(IconData icon, String label) {
-    return Row(
-      children: [
-        Icon(icon, size: 16, color: Colors.white),
-        const SizedBox(width: 4),
-        Text(
-          label,
-          style: const TextStyle(color: Colors.white),
-        ),
-      ],
-    );
-  }
+  _FavoriteScreenState createState() => _FavoriteScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _FavoriteScreenState extends State<FavoriteScreen> {
   String? _userName;
   final _properties = AppData.properties;
   final _propertyTypes = AppData.propertyTypes;
   final _searchController = TextEditingController();
+  List<Property> _favoriteHomes = [];
+
+  Future<void> _loadFavoriteStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> favoriteHomesNames =
+        prefs.getStringList('favoriteHomes') ?? [];
+    setState(() {
+      _favoriteHomes = AppData.properties
+          .where(
+            (product) => favoriteHomesNames.contains(product.name),
+          )
+          .toList();
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     _loadUserName();
+    _loadFavoriteStatus();
   }
 
   Future<void> _loadUserName() async {
@@ -61,101 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    // User info and avatar
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Halo,',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white.withOpacity(0.8),
-                              ),
-                            ),
-                            Text(
-                              _userName ?? 'Loading...',
-                              style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const CircleAvatar(
-                          radius: 25,
-                          backgroundColor: Colors.white,
-                          child:
-                              Icon(Icons.person, color: Colors.green, size: 30),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    // Search Bar
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            blurRadius: 8,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: TextField(
-                        controller: _searchController,
-                        decoration: const InputDecoration(
-                          hintText: 'Cari properti anda...',
-                          prefixIcon: Icon(Icons.search, color: Colors.green),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 12,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              // Categories
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Kategori',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: _propertyTypes
-                            .map((type) => Padding(
-                                  padding: const EdgeInsets.only(right: 12),
-                                  child: _buildCategoryCard(
-                                    type.name,
-                                    type.icon,
-                                  ),
-                                ))
-                            .toList(),
-                      ),
-                    ),
-                  ],
-                ),
+               
               ),
 
               // Featured Properties
@@ -168,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
-                          'Daftar properti',
+                          'Daftar Favorit Anda',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -176,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                    ..._properties
+                    ..._favoriteHomes
                         .where((property) => property.isFeatured)
                         .map((property) => Padding(
                               padding: const EdgeInsets.only(bottom: 16),
@@ -188,45 +97,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildCategoryCard(String title, String iconPath) {
-    return Container(
-      width: 100,
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            iconPath,
-            width: 40,
-            height: 40,
-            errorBuilder: (context, error, stackTrace) =>
-                const Icon(Icons.home, size: 40, color: Colors.green),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            title,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 12,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
       ),
     );
   }

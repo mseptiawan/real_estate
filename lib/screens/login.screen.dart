@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -12,7 +13,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   String? _email;
   String? _password;
-  bool _isPasswordVisible = false; 
+  bool _isPasswordVisible = false;
 
   Future<bool> _verifyUser(String email, String password) async {
     final prefs = await SharedPreferences.getInstance();
@@ -27,24 +28,22 @@ class _LoginScreenState extends State<LoginScreen> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           child: ConstrainedBox(
             constraints: BoxConstraints(
-              maxWidth: screenWidth > 600
-                  ? 600
-                  : screenWidth * 0.9,
+              maxWidth: screenWidth > 600 ? 600 : screenWidth * 0.9,
             ),
             child: Card(
-              elevation: 10, 
+              elevation: 10,
               shape: RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(16), 
+                borderRadius: BorderRadius.circular(16),
               ),
+              color: Color(0xFF4CAF50), // Green color for the card
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 24.0,
-                    vertical: 16.0), 
+                    horizontal: 24.0, vertical: 16.0),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -53,17 +52,28 @@ class _LoginScreenState extends State<LoginScreen> {
                       const Text(
                         'Login',
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 28,
                           fontWeight: FontWeight.bold,
+                          color: Colors.white, // White color for the title
                         ),
                       ),
-                      const SizedBox(height: 30), 
+                      const SizedBox(height: 30),
+
+                      // Email Field
                       TextFormField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: 'Email',
                           prefixIcon: Icon(Icons.email),
+                          labelStyle: TextStyle(color: Colors.white),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
                         ),
                         keyboardType: TextInputType.emailAddress,
+                        style: TextStyle(color: Colors.white),
                         onSaved: (value) => _email = value,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -75,7 +85,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           return null;
                         },
                       ),
-                      const SizedBox(height: 20), 
+                      const SizedBox(height: 20),
+
+                      // Password Field
                       TextFormField(
                         decoration: InputDecoration(
                           labelText: 'Password',
@@ -92,9 +104,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               });
                             },
                           ),
+                          labelStyle: TextStyle(color: Colors.white),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
                         ),
-                        obscureText:
-                            !_isPasswordVisible, 
+                        obscureText: !_isPasswordVisible,
+                        style: TextStyle(color: Colors.white),
                         onSaved: (value) => _password = value,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -103,12 +122,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           return null;
                         },
                       ),
-                      const SizedBox(height: 30), 
+                      const SizedBox(height: 30),
+
+                      // Login Button
                       ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                          iconColor: Colors.green, 
                           padding: const EdgeInsets.symmetric(
                               horizontal: 40, vertical: 12),
+                          backgroundColor:
+                              const Color.fromARGB(255, 245, 245, 245), // Green color for the button
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -130,9 +152,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                         },
                         icon: const Icon(Icons.login),
-                        label: const Text('Login'),
+                        label:
+                            const Text('Login', style: TextStyle(fontSize: 16)),
                       ),
                       const SizedBox(height: 20),
+
+                      // Register Link
                       GestureDetector(
                         onTap: () {
                           Navigator.pushReplacementNamed(context, '/register');
@@ -140,8 +165,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: const Text(
                           'Belum punya akun? Daftar',
                           style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontSize: 16,
                           ),
                         ),
                       ),

@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              color: Color(0xFF4CAF50), // Green color for the card
+              color: Color(0xFF4CAF50), // Hijau untuk warna background card
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 24.0, vertical: 16.0),
@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white, // White color for the title
+                          color: Colors.white, // Warna putih untuk judul
                         ),
                       ),
                       const SizedBox(height: 30),
@@ -129,8 +129,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 40, vertical: 12),
-                          backgroundColor:
-                              const Color.fromARGB(255, 245, 245, 245), // Green color for the button
+                          backgroundColor: const Color.fromARGB(
+                              255, 245, 245, 245), // Hijau untuk tombol
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -151,9 +151,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                           }
                         },
-                        icon: const Icon(Icons.login),
-                        label:
-                            const Text('Login', style: TextStyle(fontSize: 16)),
+                        icon: const Icon(Icons.login, color: Colors.green),
+                        label: const Text('Login',
+                            style:
+                                TextStyle(fontSize: 16, color: Colors.green)),
                       ),
                       const SizedBox(height: 20),
 
@@ -165,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: const Text(
                           'Belum punya akun? Daftar',
                           style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: Colors.white,
                             fontSize: 16,
                           ),
                         ),

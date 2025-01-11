@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate/screens/detail_screen.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
-import 'models/data.dart';
-import 'models/property.dart';
+import '../models/data.dart';
+import '../models/property.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

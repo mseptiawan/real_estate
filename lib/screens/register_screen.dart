@@ -53,7 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              color: Color(0xFF4CAF50), // Green color for the card
+              color: Color(0xFF4CAF50), // Hijau untuk warna background card
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 24.0, vertical: 16.0),
@@ -67,7 +67,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white, // White color for the title
+                          color: Colors.white, // Warna putih untuk judul
                         ),
                       ),
                       const SizedBox(height: 30),
@@ -244,8 +244,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 40, vertical: 12),
-                          shadowColor:
-                              Colors.green, // Green color for the button
+                          backgroundColor: const Color.fromARGB(255, 245, 245,
+                              245), // Tombol dengan warna lebih terang
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -253,7 +253,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onPressed: _register,
                         icon: const Icon(Icons.app_registration),
                         label: const Text('Register',
-                            style: TextStyle(fontSize: 16)),
+                            style:
+                                TextStyle(fontSize: 16, color: Colors.green)),
                       ),
                       const SizedBox(height: 20),
 

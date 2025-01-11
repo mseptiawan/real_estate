@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate/screens/models/property.dart';
+import 'package:real_estate/models/property.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'models/data.dart';
+import '../models/data.dart';
 
 class DetailScreen extends StatefulWidget {
   final Property property;

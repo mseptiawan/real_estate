@@ -138,7 +138,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Price: Rp ${(property.price / 1000000000).toStringAsFixed(1)} B',
+                      'Price: Rp ${property.price}',
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

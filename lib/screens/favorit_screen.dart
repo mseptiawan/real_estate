@@ -64,7 +64,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                   ),
                 ),
                 padding: const EdgeInsets.all(16.0),
-               
               ),
 
               // Featured Properties
@@ -186,7 +185,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Rp ${(property.price / 1000000000).toStringAsFixed(1)} B',
+                        'Rp ${property.price}',
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

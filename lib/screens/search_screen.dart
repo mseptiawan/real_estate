@@ -83,8 +83,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         contentPadding: const EdgeInsets.all(12),
                         title: Text(property.name),
                         subtitle: Text(property.location),
-                        trailing: Text(
-                            'Rp ${(property.price / 1000000000).toStringAsFixed(1)} B'),
+                        trailing: Text('Rp ${property.price}'),
                       ),
                     ),
                   );

@@ -315,7 +315,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Rp ${(property.price / 1000000000).toStringAsFixed(1)} B',
+                        'Rp ${property.price}',
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

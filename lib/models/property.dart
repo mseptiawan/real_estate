@@ -2,7 +2,7 @@ class Property {
   final String id;
   final String name;
   final String location;
-  final double price;
+  final String price;
   final int beds;
   final int baths;
   final double size;

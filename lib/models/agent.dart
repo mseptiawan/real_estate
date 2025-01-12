@@ -4,7 +4,6 @@ class Agent {
   final String email;
   final String phone;
   final String photo;
-  final String description;
   final List<String> properties;
 
   Agent({
@@ -13,7 +12,6 @@ class Agent {
     required this.email,
     required this.phone,
     required this.photo,
-    required this.description,
     required this.properties,
   });
 }

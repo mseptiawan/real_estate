@@ -215,7 +215,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                   size: 16, color: Colors.black),
                               const SizedBox(width: 4),
                               Text(
-                                '${property.size}',
+                                '${property}',
                                 style: const TextStyle(color: Colors.black),
                               ),
                             ],

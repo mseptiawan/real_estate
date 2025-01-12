@@ -64,6 +64,8 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     final property =
         AppData.properties.firstWhere((p) => p.id == widget.property.id);
+    final agent = AppData.agents.firstWhere((a) => a.id == property.agent);
+    final tipe = AppData.propertyTypes.firstWhere((a) => a.id == property.type);
 
     return Scaffold(
       appBar: AppBar(
@@ -90,22 +92,14 @@ class _DetailScreenState extends State<DetailScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      property.name,
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          property.location,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[600],
+                          'Rp ${property.price}',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         IconButton(
@@ -118,6 +112,174 @@ class _DetailScreenState extends State<DetailScreen> {
                             color: isFavorite ? Colors.red : null,
                           ),
                         )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          property.name,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Tanggal posting ${property.postingDay}',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'DETAIL ',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Tipe ${tipe.name}',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        // Text di sebelah kiri
+                        Text(
+                          'LUAS BANGUNAN',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                        // Spacer agar teks berada di tengah
+                        Spacer(),
+                        // Teks nilai properti di tengah
+                        Text(
+                          '${property.buildingArea}',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        // Text di sebelah kiri
+                        Text(
+                          'LUAS TANAH',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                        // Spacer agar teks berada di tengah
+                        Spacer(),
+                        // Teks nilai properti di tengah
+                        Text(
+                          '${property.surfaceArea}',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'KAMAR TIDUR                     ${property.beds}',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'KAMAR MANDI                     ${property.baths}:',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'FASILITAS                      ${property.facility}',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'LANTAI                         ${property.floor}',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'SERTIFIKAT                     ${property.certificate}',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'ALAMAT LOKASI                  ${property.location}',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 12),
@@ -136,26 +298,57 @@ class _DetailScreenState extends State<DetailScreen> {
                         color: Colors.grey[700],
                       ),
                     ),
+
                     const SizedBox(height: 16),
-                    Text(
-                      'Price: Rp ${property.price}',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    // Property features
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        _buildFeatureItem(Icons.bed, '${property.beds} Beds'),
-                        _buildFeatureItem(
-                            Icons.bathtub, '${property.baths} Baths'),
-                        _buildFeatureItem(
-                            Icons.square_foot, '${property.size} m²'),
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundImage: AssetImage(agent.photo),
+                        ),
+                        const SizedBox(width: 12),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              agent.name,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              agent.email,
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              agent.phone,
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
+                    // Property features
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    //   children: [
+                    //     _buildFeatureItem(
+                    //         Icons.bed, '${property.beds} Kamar tidur'),
+                    //     _buildFeatureItem(
+                    //         Icons.bathtub, '${property.baths} Kamar mandi'),
+                    //     _buildFeatureItem(
+                    //         Icons.square_foot, '${property.baths} m²'),
+                    //   ],
+                    // ),
                   ],
                 ),
               ),

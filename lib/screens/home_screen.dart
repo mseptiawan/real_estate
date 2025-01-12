@@ -92,35 +92,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           child:
                               Icon(Icons.person, color: Colors.green, size: 30),
                         ),
+                        // icon properti
                       ],
                     ),
-                    const SizedBox(height: 20),
-                    // Search Bar
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            blurRadius: 8,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: TextField(
-                        controller: _searchController,
-                        decoration: const InputDecoration(
-                          hintText: 'Cari properti anda...',
-                          prefixIcon: Icon(Icons.search, color: Colors.green),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 12,
-                          ),
-                        ),
-                      ),
+                    Image.asset(
+                      'assets/icons/home.png',
+                      width: 40,
+                      height: 40,
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.home, size: 40, color: Colors.green),
                     ),
+                    // Search Bar
                   ],
                 ),
               ),
@@ -139,20 +121,29 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: _propertyTypes
-                            .map((type) => Padding(
-                                  padding: const EdgeInsets.only(right: 12),
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        double cardWidth =
+                            constraints.maxWidth * 0.35; // Sesuaikan lebar card
+                        return SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: _propertyTypes.map((type) {
+                              return Padding(
+                                padding: const EdgeInsets.only(right: 12),
+                                child: Container(
+                                  width: cardWidth,
                                   child: _buildCategoryCard(
                                     type.name,
                                     type.icon,
                                   ),
-                                ))
-                            .toList(),
-                      ),
-                    ),
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        );
+                      },
+                    )
                   ],
                 ),
               ),
@@ -175,6 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
+                    const SizedBox(height: 10),
                     ..._properties
                         .where((property) => property.isFeatured)
                         .map((property) => Padding(
@@ -262,11 +254,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 200,
                 width: double.infinity,
                 fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => Container(
-                  height: 200,
-                  color: Colors.grey[300],
-                  child: Icon(Icons.home, size: 50, color: Colors.grey[400]),
-                ),
+                errorBuilder: (context, error, stackTrace) {
+                  print('Error loading image: $error');
+                  return Container(
+                    height: 200,
+                    color: Colors.grey[300],
+                    child: Icon(Icons.home, size: 50, color: Colors.grey[400]),
+                  );
+                },
               ),
             ),
             // Gradient overlay
@@ -310,7 +305,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -345,7 +340,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   size: 16, color: Colors.black),
                               const SizedBox(width: 4),
                               Text(
-                                '${property.size}',
+                                '${property.baths}',
                                 style: const TextStyle(color: Colors.black),
                               ),
                             ],

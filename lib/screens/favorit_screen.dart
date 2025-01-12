@@ -49,6 +49,18 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Daftar favorit anda',
+          style: TextStyle(
+            color: Color.fromARGB(255, 238, 234, 234),
+            fontFamily: 'Poppins', // Menggunakan font Poppins
+            fontWeight: FontWeight.bold,
+            fontSize: 20, // Ukuran font dapat disesuaikan
+          ),
+        ),
+        backgroundColor: Colors.green,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -63,7 +75,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                     colors: [Colors.green.shade500, Colors.green.shade300],
                   ),
                 ),
-                padding: const EdgeInsets.all(16.0),
               ),
 
               // Featured Properties
@@ -72,18 +83,17 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'Daftar Favorit Anda',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                    // Cek apakah _favoriteHomes kosong
+                    if (_favoriteHomes.isEmpty)
+                      Text(
+                        'Belum ada daftar favorit',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey[600],
                         ),
-                      ],
-                    ),
+                      ),
+                    // Tampilkan daftar favorit jika ada
                     ..._favoriteHomes
                         .where((property) => property.isFeatured)
                         .map((property) => Padding(

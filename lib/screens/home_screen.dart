@@ -3,6 +3,7 @@ import 'package:real_estate/screens/detail_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/data.dart';
 import '../models/property.dart';
+import 'property_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -95,13 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         // icon properti
                       ],
                     ),
-                    Image.asset(
-                      'assets/icons/home.png',
-                      width: 40,
-                      height: 40,
-                      errorBuilder: (context, error, stackTrace) =>
-                          const Icon(Icons.home, size: 40, color: Colors.green),
-                    ),
+
                     // Search Bar
                   ],
                 ),
@@ -128,14 +123,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         return SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            children: _propertyTypes.map((type) {
+                            children: AppData.propertyTypes.map((type) {
                               return Padding(
                                 padding: const EdgeInsets.only(right: 12),
-                                child: Container(
-                                  width: cardWidth,
-                                  child: _buildCategoryCard(
-                                    type.name,
-                                    type.icon,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    // Navigasi ke layar properti sesuai kategori yang dipilih
+                                    _onCategorySelected(context, type.id);
+                                  },
+                                  child: Container(
+                                    width: cardWidth,
+                                    child: _buildCategoryCard(
+                                        type.name, type.icon),
                                   ),
                                 ),
                               );
@@ -143,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         );
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -293,19 +292,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 3),
                   Row(
                     children: [
                       const Icon(Icons.location_on,
                           size: 16, color: Colors.white70),
                       const SizedBox(width: 4),
-                      Text(
-                        property.location,
-                        style: const TextStyle(color: Colors.white70),
+                      Expanded(
+                        child: Text(
+                          property.location,
+                          style: TextStyle(fontSize: 8, color: Colors.white70),
+                          softWrap: true,
+                        ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -357,4 +359,40 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+}
+
+// Fungsi untuk menavigasi ke layar properti berdasarkan kategori yang dipilih
+void _onCategorySelected(BuildContext context, String categoryId) {
+  // Filter properti berdasarkan categoryId
+  List<Property> filteredProperties = AppData.properties
+      .where((property) => property.type == categoryId)
+      .toList();
+
+  // Arahkan ke layar yang menampilkan daftar properti
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => PropertyListScreen(properties: filteredProperties),
+    ),
+  );
+}
+
+// Fungsi untuk membangun kartu kategori
+Widget _buildCategoryCard(String name, String icon) {
+  return Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    elevation: 4,
+    child: Column(
+      children: [
+        Image.asset(icon, height: 60), // Gambar kategori
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            name,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          ),
+        ),
+      ],
+    ),
+  );
 }

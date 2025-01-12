@@ -78,7 +78,7 @@ class AppData {
     Property(
       id: '1',
       name: 'Rumah dengan warna pink',
-      location: 'Jalan soak simpur komplek griya buana indah II blok K11',
+      location: 'Jalan soak simpur komplek griya buana indah',
       price: '280.000.000',
       beds: 2,
       baths: 1,
@@ -100,9 +100,8 @@ class AppData {
     ),
     Property(
       id: '2',
-      name: 'Rumah dengan warna orang',
-      location:
-          'Jl. Palem Raya 60-6, 15 Ulu, Kecamatan Seberang Ulu I, Kota Palembang, Sumatera Selatan',
+      name: 'Rumah dengan warna oranye',
+      location: 'Jl. Palem Raya 60-6, 15 Ulu, Kecamatan Seberang Ulu I',
       price: '440.000.000',
       beds: 3,
       baths: 2,
@@ -125,8 +124,7 @@ class AppData {
     Property(
       id: '3',
       name: 'Rumah warna abu-abu',
-      location:
-          'Bukit Sangkal, Kec. Kalidoni, Kota Palembang, Sumatera Selatan',
+      location: 'Bukit Sangkal, Kec. Kalidoni, Kota Palembang',
       price: '500.000.000',
       beds: 3,
       baths: 2,
@@ -147,10 +145,9 @@ class AppData {
       floor: '1',
     ),
     Property(
-      id: '5',
+      id: '4',
       name: 'Kontrakan warna kuning',
-      location:
-          'Apartemen The City, Jl. Raya No. 25, Palembang, Sumatera Selatan',
+      location: 'Apartemen The City, Jl. Raya No. 25, Palembang',
       price: '800.000/bulan',
       beds: 2,
       baths: 1,
@@ -171,10 +168,9 @@ class AppData {
       floor: '1',
     ),
     Property(
-      id: '6',
+      id: '5',
       name: 'Kontrakan warna pink',
-      location:
-          'Apartemen The City, Jl. Raya No. 25, Palembang, Sumatera Selatan',
+      location: 'Apartemen The City, Jl. Raya No. 25, Palembang',
       price: '1.000.000/bulan',
       beds: 2,
       baths: 1,
@@ -220,8 +216,7 @@ class AppData {
     Property(
       id: '7',
       name: 'Apartemen 2 Kamar Tidur',
-      location:
-          'Apartemen Park View, Jl. Sejahtera No. 12, Palembang, Sumatera Selatan',
+      location: 'Apartemen Park View, Jl. Sejahtera No. 12, Palembang',
       price: '2.000.000/bulan',
       beds: 2,
       baths: 1,
@@ -265,7 +260,7 @@ class AppData {
       floor: '0',
     ),
     Property(
-      id: '8',
+      id: '9',
       name: 'Tanah Strategis di Pusat Kota',
       location: 'Jl. Raya Pahlawan No. 8, Palembang, Sumatera Selatan',
       price: '1.200.000.000',

@@ -153,8 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                             if (isVerified) {
                               Fluttertoast.showToast(msg: 'Login Sukses!');
-                              Navigator.pushReplacementNamed(
-                                  context, '/profile');
+                              Navigator.pushReplacementNamed(context, '/');
                             } else {
                               Fluttertoast.showToast(
                                   msg: 'Email atau Password tidak valid');

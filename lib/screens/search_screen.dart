@@ -17,13 +17,13 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   void initState() {
     super.initState();
-    _searchResults = []; // Initially no search results
+    _searchResults = []; 
   }
 
   void _searchProperties(String query) {
     setState(() {
       if (query.isEmpty) {
-        _searchResults = []; // Clear results if search is empty
+        _searchResults = [];
       } else {
         _searchResults = AppData.properties
             .where((property) =>
@@ -42,9 +42,9 @@ class _SearchScreenState extends State<SearchScreen> {
           'Temukan propertimu segera',
           style: TextStyle(
             color: Color.fromARGB(255, 238, 234, 234),
-            fontFamily: 'Poppins', // Menggunakan font Poppins
+            fontFamily: 'Poppins', 
             fontWeight: FontWeight.bold,
-            fontSize: 20, // Ukuran font dapat disesuaikan
+            fontSize: 20, 
           ),
         ),
         backgroundColor: Colors.green,
@@ -68,9 +68,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
             ),
-            // Only show search results if there is a query
             if (_searchController.text.isNotEmpty) ...[
-              // Show results if query is not empty
               Expanded(
                 child: _searchResults.isNotEmpty
                     ? ListView.builder(
@@ -79,7 +77,6 @@ class _SearchScreenState extends State<SearchScreen> {
                           final property = _searchResults[index];
                           return GestureDetector(
                             onTap: () {
-                              // Navigate to DetailScreen
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -95,7 +92,6 @@ class _SearchScreenState extends State<SearchScreen> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  // Gambar properti di atas
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8),
                                     child: Image.asset(
@@ -113,7 +109,6 @@ class _SearchScreenState extends State<SearchScreen> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        // Judul properti
                                         Text(
                                           property.name,
                                           style: TextStyle(
@@ -122,7 +117,6 @@ class _SearchScreenState extends State<SearchScreen> {
                                           ),
                                         ),
                                         const SizedBox(height: 4),
-                                        // Lokasi properti
                                         Text(
                                           property.location,
                                           style: TextStyle(
@@ -131,7 +125,6 @@ class _SearchScreenState extends State<SearchScreen> {
                                           ),
                                         ),
                                         const SizedBox(height: 8),
-                                        // Harga properti
                                         Text(
                                           'Rp ${property.price}',
                                           style: TextStyle(
@@ -162,7 +155,6 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
               ),
             ]
-            // Show message when search query is empty
             else
               Center(
                 child: Padding(

@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 borderRadius: BorderRadius.circular(16),
               ),
               color: Color.fromARGB(
-                  255, 255, 255, 255), // Hijau untuk warna background card
+                  255, 255, 255, 255), 
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 24.0, vertical: 16.0),
@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(
-                              255, 0, 0, 0), // Warna putih untuk judul
+                              255, 0, 0, 0), 
                         ),
                       ),
                       const SizedBox(height: 30),

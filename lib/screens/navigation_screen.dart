@@ -29,18 +29,17 @@ class _NavigationScreenState extends State<NavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Background color hijau muda untuk keseluruhan body
       backgroundColor: Colors.green.shade50,
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _onItemTapped,
         selectedItemColor:
-            Colors.black, // Warna ikon saat dipilih menjadi hitam
+            Colors.black, 
         unselectedItemColor: Colors.black.withOpacity(
-            0.6), // Warna ikon saat tidak dipilih, hitam transparan
+            0.6), 
         backgroundColor:
-            Colors.green.shade800, // Warna latar belakang BottomNavigationBar
+            Colors.green.shade800, 
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

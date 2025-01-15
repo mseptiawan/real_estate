@@ -49,12 +49,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           : SingleChildScrollView(
               child: Column(
                 children: [
-                  // Profile Header with Gradient
                   Container(
                     width: double
-                        .infinity, // Memastikan container memenuhi lebar layar
+                        .infinity, 
                     height:
-                        260, // Anda dapat mempertahankan tinggi sesuai kebutuhan
+                        260, 
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
@@ -119,10 +118,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color.fromARGB(215, 233, 7,
-                                7), // Menghilangkan background default
+                                7), 
                             padding: const EdgeInsets.symmetric(
                               horizontal:
-                                  0, // Menghilangkan padding horizontal agar memenuhi lebar layar
+                                  0, 
                               vertical: 20,
                             ),
                             shape: RoundedRectangleBorder(
@@ -132,19 +131,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           onPressed: _logout,
                           child: Container(
                             width: double
-                                .infinity, // Membuat button memenuhi lebar layar
+                                .infinity, 
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 30), // Memberikan margin kiri-kanan
+                                horizontal: 30),
                             child: Text(
                               'Logout',
-                              textAlign: TextAlign.center, // Teks di tengah
+                              textAlign: TextAlign.center, 
                               style: const TextStyle(
                                 color: Color.fromARGB(
-                                    255, 238, 234, 234), // Warna teks merah
+                                    255, 238, 234, 234), 
                                 fontFamily:
-                                    'Poppins', // Menggunakan font Poppins
+                                    'Poppins', 
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16, // Ukuran font dapat disesuaikan
+                                fontSize: 16,
                               ),
                             ),
                           ),

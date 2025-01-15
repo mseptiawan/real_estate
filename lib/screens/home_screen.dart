@@ -51,7 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header with gradient background
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -63,7 +62,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    // User info and avatar
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -119,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     LayoutBuilder(
                       builder: (context, constraints) {
                         double cardWidth =
-                            constraints.maxWidth * 0.35; // Sesuaikan lebar card
+                            constraints.maxWidth * 0.35; 
                         return SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
@@ -128,7 +126,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 padding: const EdgeInsets.only(right: 12),
                                 child: GestureDetector(
                                   onTap: () {
-                                    // Navigasi ke layar properti sesuai kategori yang dipilih
                                     _onCategorySelected(context, type.id);
                                   },
                                   child: Container(
@@ -147,7 +144,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              // Featured Properties
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
@@ -245,7 +241,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: Stack(
           children: [
-            // Full width image
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
@@ -263,7 +258,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-            // Gradient overlay
             Container(
               height: 200,
               decoration: BoxDecoration(
@@ -361,14 +355,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-// Fungsi untuk menavigasi ke layar properti berdasarkan kategori yang dipilih
 void _onCategorySelected(BuildContext context, String categoryId) {
-  // Filter properti berdasarkan categoryId
   List<Property> filteredProperties = AppData.properties
       .where((property) => property.type == categoryId)
       .toList();
 
-  // Arahkan ke layar yang menampilkan daftar properti
   Navigator.push(
     context,
     MaterialPageRoute(
@@ -377,14 +368,13 @@ void _onCategorySelected(BuildContext context, String categoryId) {
   );
 }
 
-// Fungsi untuk membangun kartu kategori
 Widget _buildCategoryCard(String name, String icon) {
   return Card(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     elevation: 4,
     child: Column(
       children: [
-        Image.asset(icon, height: 60), // Gambar kategori
+        Image.asset(icon, height: 60), 
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(

@@ -29,7 +29,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       prefs.setString('phoneNumber', _phoneNumber!);
       prefs.setString('address', _address!);
 
-      // Debugging untuk memastikan data sudah tersimpan
       print('Email: ${prefs.getString('email')}');
       print('Password: ${prefs.getString('password')}');
       print('Full Name: ${prefs.getString('fullName')}');
@@ -59,7 +58,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 borderRadius: BorderRadius.circular(16),
               ),
               color: Color.fromARGB(
-                  255, 255, 255, 255), // Hijau untuk warna background card
+                  255, 255, 255, 255),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 24.0, vertical: 16.0),
@@ -74,12 +73,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(
-                              255, 0, 0, 0), // Warna putih untuk judul
+                              255, 0, 0, 0), 
                         ),
                       ),
                       const SizedBox(height: 30),
 
-                      // Full Name Field
                       TextFormField(
                         decoration: InputDecoration(
                           labelText: 'Nama lengkap',
@@ -107,7 +105,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 20),
 
-                      // Phone Number Field
                       TextFormField(
                         decoration: InputDecoration(
                           labelText: 'Handphone',
@@ -135,7 +132,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 20),
 
-                      // Address Field
                       TextFormField(
                         decoration: InputDecoration(
                           labelText: 'Alamat',
@@ -247,7 +243,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 20),
 
-                      // Login Redirection Text
                       GestureDetector(
                         onTap: () {
                           Navigator.pushReplacementNamed(context, '/login');

@@ -66,7 +66,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header with gradient background
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -76,14 +75,11 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                   ),
                 ),
               ),
-
-              // Featured Properties
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Cek apakah _favoriteHomes kosong
                     if (_favoriteHomes.isEmpty)
                       Text(
                         'Belum ada daftar favorit',
@@ -93,7 +89,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                           color: Colors.grey[600],
                         ),
                       ),
-                    // Tampilkan daftar favorit jika ada
                     ..._favoriteHomes
                         .where((property) => property.isFeatured)
                         .map((property) => Padding(
@@ -134,7 +129,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         ),
         child: Stack(
           children: [
-            // Full width image
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
@@ -149,7 +143,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 ),
               ),
             ),
-            // Gradient overlay
             Container(
               height: 200,
               decoration: BoxDecoration(

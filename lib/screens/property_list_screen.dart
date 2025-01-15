@@ -23,11 +23,10 @@ class PropertyListScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Gambar properti di atas
                   Image.network(
                     property
-                        .images[0], // Asumsi properti memiliki atribut imageUrl
-                    height: 200, // Sesuaikan tinggi gambar
+                        .images[0], 
+                    height: 200,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),

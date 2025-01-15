@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'models/data.dart';
-import 'models/property.dart';
+import 'package:real_estate/models/data.dart';
+import 'package:real_estate/models/property.dart';
 
 class DetailScreen extends StatelessWidget {
   final String propertyId;

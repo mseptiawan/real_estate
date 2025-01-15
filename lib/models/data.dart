@@ -83,7 +83,7 @@ class AppData {
       beds: 2,
       baths: 1,
       description:
-          "Lorem ipsum dlore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.",
+          "Rumah dengan desain menarik dan warna pink cerah ini terletak di lokasi strategis di Komplek Griya Buana Indah. Dengan dua kamar tidur, satu kamar mandi, dan luas bangunan 100 m², rumah ini cocok untuk keluarga kecil. Selain itu, terdapat fasilitas tempat parkir yang memadai. Dilengkapi dengan Sertifikat Hak Milik (SHM) dan berada di lantai pertama, menjadikannya pilihan yang aman dan nyaman.",
       images: [
         'assets/images/rumahpertama.jpg',
         'assets/images/rumahpertama.jpg',
@@ -106,7 +106,7 @@ class AppData {
       beds: 3,
       baths: 2,
       description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.",
+          "Rumah dengan warna abu-abu yang elegan ini memiliki tiga kamar tidur dan dua kamar mandi, memberikan kenyamanan lebih bagi keluarga besar. Dengan luas bangunan 100 m² dan tanah 130 m², rumah ini dilengkapi dengan fasilitas parkir yang luas. Dilengkapi dengan Sertifikat Hak Milik (SHM), rumah ini merupakan investasi yang aman di kawasan Bukit Sangkal.",
       images: [
         'assets/images/rumahkedua.jpg',
         'assets/images/rumahkedua.jpg',
@@ -129,7 +129,7 @@ class AppData {
       beds: 3,
       baths: 2,
       description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cu proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.",
+          "Kontrakan dengan warna kuning cerah ini adalah pilihan tepat bagi mahasiswa atau pekerja yang membutuhkan tempat tinggal praktis dan nyaman. Terletak di Apartemen The City, dengan dua kamar tidur dan satu kamar mandi, tempat ini juga dilengkapi dengan fasilitas AC, water heater, dan dapur kecil. Dengan luas bangunan 30 m² dan sertifikat hak milik, kontrakan ini menawarkan kenyamanan dengan harga terjangkau.",
       images: [
         'assets/images/rumahketiga.jpg',
         'assets/images/rumahketiga.jpg',
